@@ -29,21 +29,26 @@ public class TesteMatriculaAluno {
 		
 		System.out.println(javaColecoes.getAlunos());
 		
+		Aluno a = javaColecoes.buscaMatriculado(1);
+		System.out.println(a);
 //	    Set<Aluno> alunos = javaColecoes.getAlunos();
 //	    alunos.add(a4);
 //		
 //		Set<String> nomes = Collections.emptySet();
 //		nomes.add("Gabriel");
 //		System.out.println(nomes);
-		
-		List<String> letras = new LinkedList<>();
-		letras.add("A");
-		letras.add("B");
-		letras.add("C");
-		letras.add("D");
-		
-	
-		
+//		
+//		List<String> letras = new LinkedList<>();
+//		letras.add("A");
+//		letras.add("B");
+//		letras.add("C");
+//		letras.add("D");
+//		
+//	Iterator<String> it = letras.iterator();
+//	while (it.hasNext()) {
+//		System.out.println(it.next());
+//	}
+//		
 	}
 
 }

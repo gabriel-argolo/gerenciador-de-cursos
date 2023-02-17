@@ -2,8 +2,11 @@ package br.com.alura;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,6 +15,7 @@ public class Curso {
 	private String instrutor;
 	private List<Aula> aula = new ArrayList<Aula>();
 	private Set<Aluno> aluno = new HashSet<>();
+	private Map<Integer, Aluno> matriculaParaAluno= new HashMap<>();
 	private int tempoTotal;
 
 	public Curso(String nome, String instrutor) {
@@ -45,25 +49,27 @@ public class Curso {
 
 	public void matricula(Aluno a) {
 		this.aluno.add(a);
+		this.matriculaParaAluno.put(a.getNumeroMatricula(), a);
 	}
 
 	public Set<Aluno> getAlunos(){
 		return Collections.unmodifiableSet(aluno);
 	}
-	
+
 	public boolean estaMatriculado(Aluno aluno){
 		return this.aluno.contains(aluno);
 	}
-	
-//	@Override
-//	public int hashCode() {
-//		return this.nome.hashCode();
-//	}
-//	@Override
-//	public boolean equals(Object obj) {
-//		Aluno outroAluno = (Aluno) obj;
-//		return this.nome.equals(outroAluno.getNome());
-//	}
+
+
+	//	@Override
+	//	public int hashCode() {
+	//		return this.nome.hashCode();
+	//	}
+	//	@Override
+	//	public boolean equals(Object obj) {
+	//		Aluno outroAluno = (Aluno) obj;
+	//		return this.nome.equals(outroAluno.getNome());
+	//	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(nome);
@@ -79,12 +85,19 @@ public class Curso {
 		Curso other = (Curso) obj;
 		return Objects.equals(nome, other.nome);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Curso [nome=" + nome + ", instrutor=" + instrutor + ", aula=" + aula + ", tempoTotal=" + tempoTotal
 				+ "]";
 	}
-	
+	public Aluno buscaMatriculado(int i) {
+		// TODO Auto-generated method stub
+		if(this.matriculaParaAluno.get(i) == null) {
+			throw new NoSuchElementException("Elemento nao Encontrado");
+		}
+		return (this.matriculaParaAluno.get(i));
+	}
+
 
 }
